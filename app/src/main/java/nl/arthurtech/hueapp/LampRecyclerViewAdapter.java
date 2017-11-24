@@ -1,8 +1,13 @@
 package nl.arthurtech.hueapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -11,23 +16,43 @@ import java.util.List;
  */
 
 public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerViewAdapter.ViewHolder> {
+    private Context context;
+    private List<LampItem> lamps;
 
     public LampRecyclerViewAdapter(Context context, List<LampItem> lamps){
-
+        this.context = context;
+        this.lamps = lamps;
     }
 
     @Override
-    public LampRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lamp_row,parent,false);
+        return new ViewHolder(view, context);
     }
 
     @Override
     public void onBindViewHolder(LampRecyclerViewAdapter.ViewHolder holder, int position) {
-
+        LampItem lampItem = lamps.get(position);
+        int color = 100;//TODO: Moet kleur worden van de lamp
+        holder.lampID.setText(lampItem.getLampID());
+        holder.lampColor.setColorFilter(color);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lamps.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView lampID;
+        ImageView lampColor;
+
+        public ViewHolder(View itemView, final Context ctx) {
+            super(itemView);
+            context = ctx;
+            lampID = itemView.findViewById(R.id.textLampID);
+            lampColor = itemView.findViewById(R.id.imageLampColor);
+        }
+
     }
 }
