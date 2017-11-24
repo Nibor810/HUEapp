@@ -8,10 +8,10 @@ import android.graphics.Color;
 
 public class LampItem {
     private String lampID;
-    private Color lampColor;
+    private int lampColor;
 
 
-    public LampItem(String lampID, Color lampColor) {
+    public LampItem(String lampID, int lampColor) {
         this.lampID = lampID;
         this.lampColor = lampColor;
     }
@@ -20,7 +20,7 @@ public class LampItem {
         return lampID;
     }
 
-    public Color getLampColor() {
+    public int getLampColor() {
         return lampColor;
     }
 }
