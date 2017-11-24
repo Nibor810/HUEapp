@@ -14,7 +14,7 @@ public class LampCommunication
 {
     private final String APIUrl = "127.0.0.1:80/api";
     private String APIUserId;
-    private RequestQueue queue
+    private RequestQueue queue;
 
     public LampCommunication()
     {
