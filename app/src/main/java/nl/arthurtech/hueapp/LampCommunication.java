@@ -1,5 +1,6 @@
 package nl.arthurtech.hueapp;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.*;
@@ -14,19 +15,18 @@ public class LampCommunication
 {
     private final String APIUrl = "127.0.0.1:80/api";
     private String APIUserId;
-    private RequestQueue queue;
 
-    public LampCommunication()
+    public LampCommunication(Context context)
     {
-       queue = new RequestQueue(this);
+
     }
 
-    public String getLamps()
+    public void getLamps(Context context)
     {
-        return getCallLampApi("/" + APIUserId);
+        getCallLampApi("/" + APIUserId, context);
     }
 
-    private void getCallLampApi(String resource)
+    private void getCallLampApi(String resource, Context context)
     {
         String url = APIUrl + resource;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -46,7 +46,7 @@ public class LampCommunication
             }
         });
 
-        MyVolleyRequestQueue.getInstance(this).getRequestQueue().add(stringRequest);
+        MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(stringRequest);
     }
 
     private String putCallLampApi(String resource, String data)
