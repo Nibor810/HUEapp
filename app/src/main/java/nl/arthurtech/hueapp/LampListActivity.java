@@ -34,5 +34,7 @@ public class LampListActivity extends AppCompatActivity {
     //Moet de lampen in de lijst met lampitems stoppen
     private void GetLamps() {
         lamps.add(new LampItem("Lamp 1",1235));
+        lamps.add(new LampItem("Lamp 2",2725));
+        lamps.add(new LampItem("Lamp 3",9521));
     }
 }

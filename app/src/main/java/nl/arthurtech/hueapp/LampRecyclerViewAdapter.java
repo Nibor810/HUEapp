@@ -51,6 +51,14 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
             context = ctx;
             lampID = itemView.findViewById(R.id.textLampID);
             lampColor = itemView.findViewById(R.id.imageLampColor);
+
+            itemView.setOnClickListener((View v)->{
+                //TODO: Laat de fragment omhoog komen
+                LampItem lampItem = lamps.get(getAdapterPosition());
+                //Intent intent = new Intent(context,);
+                //intent.putExtra("lamp",lampItem);
+                //startActivity(intent);
+            });
         }
 
     }
