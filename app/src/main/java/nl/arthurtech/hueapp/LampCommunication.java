@@ -16,11 +16,6 @@ public class LampCommunication
     private final String APIUrl = "127.0.0.1:80/api";
     private String APIUserId;
 
-    public LampCommunication(Context context)
-    {
-
-    }
-
     public void getLamps(Context context)
     {
         getCallLampApi("/" + APIUserId, context);
