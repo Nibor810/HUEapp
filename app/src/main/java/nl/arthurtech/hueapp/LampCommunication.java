@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 /**
  * Created by Arthur on 18-11-2017.
@@ -13,31 +12,48 @@ import com.android.volley.toolbox.Volley;
 
 public class LampCommunication
 {
-    private final String APIUrl = "127.0.0.1:80/api";
+    private String APIUrl;
     private String APIUserId;
+    private Context context;
 
-    public void getLamps(Context context)
+    public LampCommunication(boolean local, Context context)
+    {
+        if(local)
+            APIUrl = "http://192.168.1.3:80/api";
+        else
+            APIUrl = "";
+
+        this.context = context;
+
+        getCallLampApi("", context);
+    }
+
+    public void getLamps()
     {
         getCallLampApi("/" + APIUserId, context);
     }
 
-    private void getCallLampApi(String resource, Context context)
+    private String getCallLampApi(String resource, Context context)
     {
         String url = APIUrl + resource;
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>()
+            new Response.Listener<String>()
+            {
+                @Override
+                public void onResponse(String r)
                 {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        //loadJsonArray(response);
-                    }
-                }, new Response.ErrorListener()
+                    System.out.println(r);
+                }
+            },
+            new Response.ErrorListener()
         {
             @Override
             public void onErrorResponse(VolleyError error)
             {
                 Log.d("ERROR", "API CALL ERROR");
+                Log.d("ERROR", error.getMessage());
             }
         });
 
@@ -60,7 +76,8 @@ public class LampCommunication
                     {
                         //loadJsonArray(response);
                     }
-                }, new Response.ErrorListener()
+                },
+                new Response.ErrorListener()
         {
             @Override
             public void onErrorResponse(VolleyError error)

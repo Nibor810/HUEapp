@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lampCommunication = new LampCommunication();
+        lampCommunication = new LampCommunication(true, this);
+        lampCommunication.getLamps();
     }
 
     public LampCommunication getLampCommunication()
