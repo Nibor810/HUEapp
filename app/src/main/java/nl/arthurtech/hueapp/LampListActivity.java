@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,10 +15,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class LampListActivity extends AppCompatActivity implements ListFragment.OnFragmentInteractionListener, LampDetailFragment.OnFragmentInteractionListener{
+public class LampListActivity extends AppCompatActivity implements ListFragment.OnFragmentInteractionListener, LampDetailFragment.OnFragmentInteractionListener {
     //RecyclerView recyclerView;
     //LampRecyclerViewAdapter lampRecyclerViewAdapter;
     List<LampItem> lamps= new ArrayList<>();
+    private static final String TAG = "LampListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +28,15 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onFragmentInteraction(LampItem lamp) {
+        LampDetailFragment lampDetailFragment = (LampDetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_lamp_list);
+        Log.i(TAG,"ListitemClicked");
+        lampDetailFragment.setLamp(lamp);
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
 }

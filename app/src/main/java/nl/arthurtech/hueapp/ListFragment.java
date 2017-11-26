@@ -71,13 +71,6 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -97,7 +90,10 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        Log.i(TAG,"Clicked on item");
+        LampItem lamp = this.lamps.get(i);
+        if(mListener != null)
+            mListener.onFragmentInteraction(lamp);
     }
 
     /**
@@ -112,6 +108,6 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(LampItem lamp);
     }
 }

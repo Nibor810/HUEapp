@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="0.6" />
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fragment_lamp_detail"
         android:name="nl.arthurtech.hueapp.LampDetailFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_lamp_detail" />
 
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/fragment_lamp_list"
         android:name="nl.arthurtech.hueapp.ListFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"

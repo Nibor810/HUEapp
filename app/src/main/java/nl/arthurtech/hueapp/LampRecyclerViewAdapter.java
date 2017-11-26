@@ -3,6 +3,7 @@ package nl.arthurtech.hueapp;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +54,9 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
             lampColor = itemView.findViewById(R.id.imageLampColor);
 
             itemView.setOnClickListener((View v)->{
-                //TODO: Laat de fragment omhoog komen
                 LampItem lampItem = lamps.get(getAdapterPosition());
-                //Intent intent = new Intent(context,);
-                //intent.putExtra("lamp",lampItem);
-                //startActivity(intent);
+                Log.i("RecyclerView","Klikopitem");
+                
             });
         }
 

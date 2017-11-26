@@ -9,12 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.Switch;
 
 public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     private OnFragmentInteractionListener mListener;
     private static final String TAG = "LampDetailFragment";
     private LampItem lamp;
+    private ImageView lampColorImage;
+    private Switch lampSwitch;
+
 
     public LampDetailFragment() {
         // Required empty public constructor
@@ -27,7 +32,8 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
     }
 
     private void UpdateDetailUI() {
-
+        Log.i(TAG,"lampupdate"+lamp.getLampID());
+        lampSwitch.setText(lamp.getLampID());
     }
 
     public static LampDetailFragment newInstance() {
@@ -48,14 +54,10 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lamp_detail, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        View view = inflater.inflate(R.layout.fragment_lamp_detail, container, false);
+        lampColorImage = view.findViewById(R.id.imageDetailColor);
+        lampSwitch = view.findViewById(R.id.lampSwitch);
+        return view;
     }
 
     @Override
@@ -82,6 +84,6 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(LampItem lamp);
     }
 }
