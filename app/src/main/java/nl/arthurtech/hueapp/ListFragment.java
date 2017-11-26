@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
     LampRecyclerViewAdapter lampRecyclerViewAdapter;
 
     private OnFragmentInteractionListener mListener;
+    private static final String TAG = "ListFragment";
 
     public ListFragment() {
         // Required empty public constructor
@@ -49,6 +51,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     //Moet de lampen in de lijst met lampitems stoppen
     private void GetLamps() {
+        Log.i(TAG, "addLamps");
         lamps.add(new LampItem("Lamp 1",1235));
         lamps.add(new LampItem("Lamp 2",2725));
         lamps.add(new LampItem("Lamp 3",9521));
@@ -57,6 +60,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.i(TAG, "createView");
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerView);
