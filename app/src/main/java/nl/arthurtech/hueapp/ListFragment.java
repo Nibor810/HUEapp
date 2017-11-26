@@ -24,7 +24,7 @@ import java.util.List;
  * Use the {@link ListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class ListFragment extends Fragment{
     List<LampItem> lamps= new ArrayList<>();
     RecyclerView recyclerView;
     LampRecyclerViewAdapter lampRecyclerViewAdapter;
@@ -88,14 +88,6 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         mListener = null;
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        //THIS ONE DOES NOT WORK, REMOVE ON CLICK LISTENER
-        Log.i(TAG,"Clicked on item");
-        LampItem lamp = this.lamps.get(i);
-        if(mListener != null)
-            mListener.onFragmentInteraction(lamp);
-    }
 
     /**
      * This interface must be implemented by activities that contain this
