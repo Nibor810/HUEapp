@@ -45,12 +45,6 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GetLamps();
-        recyclerView = getView().findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        lampRecyclerViewAdapter = new LampRecyclerViewAdapter(this.getContext(), lamps);
-        recyclerView.setAdapter(lampRecyclerViewAdapter);
-
     }
 
     //Moet de lampen in de lijst met lampitems stoppen
@@ -63,8 +57,14 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        lampRecyclerViewAdapter = new LampRecyclerViewAdapter(getContext(), lamps);
+        recyclerView.setAdapter(lampRecyclerViewAdapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
