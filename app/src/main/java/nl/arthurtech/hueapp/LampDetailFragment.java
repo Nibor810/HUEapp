@@ -12,9 +12,19 @@ import android.widget.AdapterView;
 public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     private OnFragmentInteractionListener mListener;
+    private LampItem lamp;
 
     public LampDetailFragment() {
         // Required empty public constructor
+    }
+
+    public void setLamp(LampItem lamp){
+        this.lamp = lamp;
+        UpdateDetailUI();
+    }
+
+    private void UpdateDetailUI() {
+
     }
 
     public static LampDetailFragment newInstance() {
