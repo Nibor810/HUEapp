@@ -62,11 +62,11 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                              Bundle savedInstanceState) {
         Log.i(TAG, "createView");
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-
+        LampDetailFragment lampDetailFragment = (LampDetailFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_lamp_detail);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        lampRecyclerViewAdapter = new LampRecyclerViewAdapter(getContext(), lamps);
+        lampRecyclerViewAdapter = new LampRecyclerViewAdapter(getContext(), lamps,lampDetailFragment);
         recyclerView.setAdapter(lampRecyclerViewAdapter);
         return view;
     }
@@ -90,6 +90,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        //THIS ONE DOES NOT WORK, REMOVE ON CLICK LISTENER
         Log.i(TAG,"Clicked on item");
         LampItem lamp = this.lamps.get(i);
         if(mListener != null)

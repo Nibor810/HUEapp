@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Switch;
 
-public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener, Callback{
 
     private OnFragmentInteractionListener mListener;
     private static final String TAG = "LampDetailFragment";
@@ -48,6 +49,7 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
         super.onCreate(savedInstanceState);
 
 
+
     }
 
     @Override
@@ -80,6 +82,12 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+    }
+
+    @Override
+    public void updateLampDetails(LampItem lamp) {
+        Log.i("Callback","-called");
+        setLamp(lamp);
     }
 
     public interface OnFragmentInteractionListener {

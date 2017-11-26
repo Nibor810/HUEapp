@@ -1,5 +1,7 @@
 package nl.arthurtech.hueapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -19,16 +21,20 @@ import java.util.List;
 public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerViewAdapter.ViewHolder> {
     private Context context;
     private List<LampItem> lamps;
+    private LampDetailFragment fragment;
 
-    public LampRecyclerViewAdapter(Context context, List<LampItem> lamps){
+    public LampRecyclerViewAdapter(Context context, List<LampItem> lamps, LampDetailFragment fragment){
         this.context = context;
         this.lamps = lamps;
+        this.fragment = fragment;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lamp_row,parent,false);
-        return new ViewHolder(view, context);
+        ViewHolder viewHolder = new ViewHolder(view, context);
+        viewHolder.setListener(fragment);
+        return viewHolder;
     }
 
     @Override
@@ -46,6 +52,7 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView lampID;
         ImageView lampColor;
+        private Callback mCallback;
 
         public ViewHolder(View itemView, final Context ctx) {
             super(itemView);
@@ -56,8 +63,12 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
             itemView.setOnClickListener((View v)->{
                 LampItem lampItem = lamps.get(getAdapterPosition());
                 Log.i("RecyclerView","Klikopitem");
-                
+                mCallback.updateLampDetails(lampItem);
             });
+        }
+
+        public void setListener(Callback callback){
+            mCallback = callback;
         }
 
     }
