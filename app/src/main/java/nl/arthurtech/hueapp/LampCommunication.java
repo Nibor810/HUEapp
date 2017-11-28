@@ -16,13 +16,9 @@ public class LampCommunication
     private String APIUserId;
     private Context context;
 
-    public LampCommunication(boolean local, Context context)
+    public LampCommunication(String ipAdress, Context context)
     {
-        if(local)
-            APIUrl = "http://192.168.1.3:80/api";
-        else
-            APIUrl = "";
-
+        APIUrl = ipAdress;
         this.context = context;
 
         getCallLampApi("", context);
@@ -33,7 +29,7 @@ public class LampCommunication
         getCallLampApi("/" + APIUserId, context);
     }
 
-    private String getCallLampApi(String resource, Context context)
+    private void getCallLampApi(String resource, Context context)
     {
         String url = APIUrl + resource;
 
@@ -46,8 +42,7 @@ public class LampCommunication
                 {
                     System.out.println(r);
                 }
-            },
-            new Response.ErrorListener()
+            }, new Response.ErrorListener()
         {
             @Override
             public void onErrorResponse(VolleyError error)

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="nl.arthurtech.hueapp.LampRow">
 
     <android.support.v7.widget.CardView
@@ -15,14 +15,14 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageLamp"
+                android:id="@+id/imageLampColor"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginBottom="8dp"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageLamp"
+                app:layout_constraintStart_toEndOf="@+id/imageLampColor"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Lamp 1" />
         </android.support.constraint.ConstraintLayout>
