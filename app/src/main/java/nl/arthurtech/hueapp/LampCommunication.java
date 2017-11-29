@@ -16,12 +16,11 @@ public class LampCommunication
     private String APIUserId;
     private Context context;
 
-    public LampCommunication(String ipAdress, Context context)
+    public LampCommunication(String ipAdress, Context context, String APIUserId)
     {
         APIUrl = ipAdress;
         this.context = context;
-
-        getCallLampApi("", context);
+        this.APIUserId = APIUserId;
     }
 
     public void getLamps()
