@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, LampListActivity.class));
         });
 
-        LampCommunication lampCommunication = new LampCommunication(ipAdress, this);
-        lampCommunication.getLamps();
+        //lampCommunication = new LampCommunication(ipAdress, this);
+        //lampCommunication.getLamps();
     }
 
     private void saveIP(String ip){
