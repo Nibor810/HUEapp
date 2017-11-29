@@ -6,6 +6,8 @@ import android.util.Log;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 
+import java.util.ArrayList;
+
 /**
  * Created by Arthur on 18-11-2017.
  */
@@ -32,16 +34,18 @@ public class LampCommunication
     {
         String url = APIUrl + resource;
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-            new Response.Listener<String>()
-            {
-                @Override
-                public void onResponse(String r)
+                new Response.Listener<String>()
                 {
-                    System.out.println(r);
-                }
-            }, new Response.ErrorListener()
+                    @Override
+                    public void onResponse(String r)
+                    {
+                        System.out.println(r);
+
+                        //TODO: Make seperate Request for API Key.
+                        //TODO: CALL CALLBACK LOADING ACTIVITY
+                    }
+                }, new Response.ErrorListener()
         {
             @Override
             public void onErrorResponse(VolleyError error)
@@ -81,14 +85,14 @@ public class LampCommunication
         });
     }
 
-    public String getAPIUserId()
-    {
-        return APIUserId;
-    }
-
     public void setAPIUserId(String APIUserId)
     {
         this.APIUserId = APIUserId;
+    }
+
+    public ArrayList<LampItem> getLampList()
+    {
+        return  new ArrayList<LampItem>();
     }
 }
 
