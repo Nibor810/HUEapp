@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Switch;
 
 public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener, FragmentCallBack{
@@ -21,6 +23,10 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
     private LampItem lamp;
     private ImageView lampColorImage;
     private Switch lampSwitch;
+    private SeekBar sbSaturation;
+    private SeekBar sbBrightness;
+    private SeekBar sbHue;
+
 
 
     public LampDetailFragment() {
@@ -65,8 +71,84 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
         View view = inflater.inflate(R.layout.fragment_lamp_detail, container, false);
         lampColorImage = view.findViewById(R.id.imageDetailColor);
         lampSwitch = view.findViewById(R.id.lampSwitch);
+        sbBrightness = view.findViewById(R.id.seekBarBrightness);
+        sbHue = view.findViewById(R.id.seekBarHue);
+        sbSaturation = view.findViewById(R.id.seekBarSaturation);
+        lampSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            lampSwitched(isChecked);
+        });
+        sbBrightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+                brightnessChanged(progress,fromUser);
+
+            }
+        });
+        sbHue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+                hueChanged(progress,fromUser);
+
+            }
+        });
+        sbSaturation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+                saturationChanged(progress,fromUser);
+            }
+        });
         return view;
     }
+
+    private void lampSwitched(boolean isChecked) {
+        //TODO: sent on or of command to lamp
+    }
+
+    private void saturationChanged(int progress, boolean fromUser){
+        //TODO: sent new saturation value to lamp
+    }
+
+    private void hueChanged(int progress, boolean fromUser){
+        //TODO: sent new hue value to lamp
+    }
+
+    private void brightnessChanged(int progress, boolean fromUser){
+        //TODO: sent new brightness value to lamp
+    }
+
 
     @Override
     public void onAttach(Context context) {
