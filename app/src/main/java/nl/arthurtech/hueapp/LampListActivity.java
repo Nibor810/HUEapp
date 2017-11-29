@@ -45,6 +45,10 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
         return sharedPref.getString(key,"127.0.0.1");
     }
 
+    private void getLamps(){
+        //TODO: Get all the lamps.
+    }
+
     @Override
     public void onFragmentInteraction(LampItem lamp) {
         LampDetailFragment lampDetailFragment = (LampDetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_lamp_list);
