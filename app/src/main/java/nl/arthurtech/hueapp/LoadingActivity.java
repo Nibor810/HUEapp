@@ -80,7 +80,7 @@ public class LoadingActivity extends AppCompatActivity {
             JSONObject succes = response.getJSONObject(0);
             JSONObject key = (JSONObject) succes.get("success");
 
-            Intent intent = new Intent(this, LoadingActivity.class);
+            Intent intent = new Intent(this, LampListActivity.class);
             intent.putExtra("APIKEY", (String) key.get("username"));
             startActivity(intent);
         }
