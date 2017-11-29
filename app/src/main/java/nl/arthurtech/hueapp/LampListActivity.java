@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class LampListActivity extends AppCompatActivity implements ListFragment.OnFragmentInteractionListener, LampDetailFragment.OnFragmentInteractionListener {
+
     //RecyclerView recyclerView;
     //LampRecyclerViewAdapter lampRecyclerViewAdapter;
     List<LampItem> lamps = new ArrayList<>();

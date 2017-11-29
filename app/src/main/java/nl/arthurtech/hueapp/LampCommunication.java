@@ -5,7 +5,8 @@ import android.util.Log;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
+import java.util.ArrayList;
 
 /**
  * Created by Arthur on 18-11-2017.
@@ -13,15 +14,18 @@ import com.android.volley.toolbox.Volley;
 
 public class LampCommunication
 {
-    private final String APIUrl = "127.0.0.1:80/api";
+    private String APIUrl;
     private String APIUserId;
+    private Context context;
 
-    public LampCommunication(Context context)
+    public LampCommunication(String ipAdress, Context context, String APIUserId)
     {
-
+        APIUrl = ipAdress;
+        this.context = context;
+        this.APIUserId = APIUserId;
     }
 
-    public void getLamps(Context context)
+    public void getLamps()
     {
         getCallLampApi("/" + APIUserId, context);
     }
@@ -29,13 +33,17 @@ public class LampCommunication
     private void getCallLampApi(String resource, Context context)
     {
         String url = APIUrl + resource;
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>()
                 {
                     @Override
-                    public void onResponse(String response)
+                    public void onResponse(String r)
                     {
-                        //loadJsonArray(response);
+                        System.out.println(r);
+
+                        //TODO: Make seperate Request for API Key.
+                        //TODO: CALL CALLBACK LOADING ACTIVITY
                     }
                 }, new Response.ErrorListener()
         {
@@ -43,6 +51,7 @@ public class LampCommunication
             public void onErrorResponse(VolleyError error)
             {
                 Log.d("ERROR", "API CALL ERROR");
+                Log.d("ERROR", error.getMessage());
             }
         });
 
@@ -65,7 +74,8 @@ public class LampCommunication
                     {
                         //loadJsonArray(response);
                     }
-                }, new Response.ErrorListener()
+                },
+                new Response.ErrorListener()
         {
             @Override
             public void onErrorResponse(VolleyError error)
@@ -75,14 +85,14 @@ public class LampCommunication
         });
     }
 
-    public String getAPIUserId()
-    {
-        return APIUserId;
-    }
-
     public void setAPIUserId(String APIUserId)
     {
         this.APIUserId = APIUserId;
+    }
+
+    public ArrayList<LampItem> getLampList()
+    {
+        return  new ArrayList<LampItem>();
     }
 }
 
