@@ -30,7 +30,7 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_lamp_list);
-        String apiKey;
+        String apiKey = "";
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             //TODO: what to do with empty key.
@@ -38,6 +38,8 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
             apiKey = extras.getString("APIKEY");
         }
         //TODO: Create Lamp Communication
+
+        System.out.println("LamplistActivity: " + apiKey);
     }
 
     private String getFromSharedPreferences(String key){

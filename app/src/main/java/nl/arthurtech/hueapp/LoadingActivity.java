@@ -1,5 +1,6 @@
 package nl.arthurtech.hueapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -78,7 +79,10 @@ public class LoadingActivity extends AppCompatActivity {
         {
             JSONObject succes = response.getJSONObject(0);
             JSONObject key = (JSONObject) succes.get("success");
-            System.out.println(key.get("username"));
+
+            Intent intent = new Intent(this, LoadingActivity.class);
+            intent.putExtra("APIKEY", (String) key.get("username"));
+            startActivity(intent);
         }
         catch (JSONException e)
         {
