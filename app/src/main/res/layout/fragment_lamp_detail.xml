@@ -17,6 +17,7 @@
             android:layout_height="90dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:contentDescription="color"
             android:src="@color/colorAccent" />
 
         <Switch
@@ -25,15 +26,58 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView"
             android:layout_toEndOf="@+id/imageDetailColor"
-            android:text="In/Uit Schakelen" />
+            tools:text="Lamp 2" />
 
-        <TextView
-            android:id="@+id/textView"
+        <SeekBar
+            android:id="@+id/seekBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/lampSwitch"
+            android:layout_toEndOf="@+id/lampSwitch" />
+
+        <TextView
+            android:id="@+id/textSaturaton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lampSwitch"
             android:layout_toEndOf="@+id/imageDetailColor"
-            tools:text="Lamp #" />
+            android:layout_toStartOf="@+id/seekBar"
+            android:text="Saturation" />
+
+        <TextView
+            android:id="@+id/textBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textSaturaton"
+            android:layout_toEndOf="@+id/imageDetailColor"
+            android:layout_toStartOf="@+id/seekBar2"
+            android:text="Brightness" />
+
+        <TextView
+            android:id="@+id/textHue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textBrightness"
+            android:layout_toEndOf="@+id/imageDetailColor"
+            android:layout_toStartOf="@+id/seekBar2"
+            android:text="Hue" />
+
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/seekBar"
+            android:layout_alignTop="@+id/textBrightness" />
+
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/seekBar2"
+            android:layout_below="@+id/seekBar2" />
 
     </RelativeLayout>
 </FrameLayout>
