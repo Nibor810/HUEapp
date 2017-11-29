@@ -23,10 +23,9 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
+        //Requests Key
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, "", null, r -> {
             System.out.println(r);
-            //TODO: Make seperate Request for API Key.
-            //TODO: CALL CALLBACK LOADING ACTIVITY
         }, error -> {
             Log.d("ERROR", "API CALL ERROR");
             Log.d("ERROR", error.getMessage());
