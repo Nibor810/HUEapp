@@ -1,6 +1,7 @@
 package nl.arthurtech.hueapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,5 +32,9 @@ public class MainActivity extends AppCompatActivity
 
     private void saveIP(String ip){
         //TODO:Sla IP op in file om later op te kunnen halen
+        SharedPreferences sharedPref = this.getPreferences(this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("IP", ip);
+        editor.commit();
     }
 }
