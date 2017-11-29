@@ -1,6 +1,7 @@
 package nl.arthurtech.hueapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,11 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
 
     public LampDetailFragment() {
         // Required empty public constructor
+    }
+
+    private String getFromSharedPreferences(String key){
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getString(key,"127.0.0.1");
     }
 
     public void setLamp(LampItem lamp){
