@@ -52,7 +52,7 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView lampID;
         ImageView lampColor;
-        private Callback mCallback;
+        private FragmentCallBack mCallback;
 
         public ViewHolder(View itemView, final Context ctx) {
             super(itemView);
@@ -67,7 +67,7 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
             });
         }
 
-        public void setListener(Callback callback){
+        public void setListener(FragmentCallBack callback){
             mCallback = callback;
         }
 

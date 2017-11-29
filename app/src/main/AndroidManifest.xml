@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LampListActivity" />
-        <activity android:name=".LampRow"/>
+        <activity android:name=".LampRow" />
+        <activity android:name=".LoadingActivity"></activity>
     </application>
 
 </manifest>

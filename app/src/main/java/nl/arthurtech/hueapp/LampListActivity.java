@@ -26,6 +26,7 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamp_list);
+        //TODO: Create Lamp Communication
     }
 
     @Override
