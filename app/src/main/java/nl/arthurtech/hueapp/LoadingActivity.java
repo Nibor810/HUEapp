@@ -1,5 +1,6 @@
 package nl.arthurtech.hueapp;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, "http://192.168.1.3:80/api", null, r -> {
             System.out.println(r);
+            parseApiKeyResponse(r);
         }, error -> {
             Log.d("ERROR", "API CALL ERROR");
             Log.d("ERROR", error.getMessage());
@@ -58,7 +60,8 @@ public class LoadingActivity extends AppCompatActivity {
                     try
                     {
                         return jsonBody.getBytes("utf-8");
-                    } catch (UnsupportedEncodingException e)
+                    }
+                    catch (UnsupportedEncodingException e)
                     {
                         e.printStackTrace();
                     }
@@ -67,5 +70,19 @@ public class LoadingActivity extends AppCompatActivity {
             }
         };
         MyVolleyRequestQueue.getInstance(this).getRequestQueue().add(request);
+    }
+
+    private void parseApiKeyResponse(JSONArray response)
+    {
+        try
+        {
+            JSONObject succes = response.getJSONObject(0);
+            JSONObject key = (JSONObject) succes.get("success");
+            System.out.println(key.get("username"));
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
