@@ -1,6 +1,8 @@
 package nl.arthurtech.hueapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -35,6 +37,11 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
             apiKey = extras.getString("APIKEY");
         }
         //TODO: Create Lamp Communication
+    }
+
+    private String getFromSharedPreferences(String key){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getString(key,"127.0.0.1");
     }
 
     @Override
