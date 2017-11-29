@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 
         emulatorButton.setOnClickListener((View v) -> {
             saveIP("127.0.0.1");
-            startActivity(new Intent(this, LampListActivity.class));
+            startActivity(new Intent(this, LoadingActivity.class));
         });
 
         //lampCommunication = new LampCommunication(ipAdress, this);
