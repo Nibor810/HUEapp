@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Switch;
 
-public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener, Callback{
+public class LampDetailFragment extends Fragment implements AdapterView.OnItemClickListener, FragmentCallBack{
 
     private OnFragmentInteractionListener mListener;
     private static final String TAG = "LampDetailFragment";
