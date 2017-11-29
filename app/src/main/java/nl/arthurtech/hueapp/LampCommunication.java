@@ -4,8 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.*;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -18,18 +23,62 @@ public class LampCommunication
     private String APIUserId;
     private Context context;
 
-    public LampCommunication(String ipAdress, Context context, String APIUserId)
+    public LampCommunication(Context context, String APIUserId)
     {
-        APIUrl = ipAdress;
         this.context = context;
         this.APIUserId = APIUserId;
+
+        getLamps();
     }
 
     public void getLamps()
     {
-        getCallLampApi("/" + APIUserId, context);
+        //Request the API Key
+        JSONObject json = new JSONObject();
+        try
+        {
+            json.put("devicetype", "Phone");
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        final String jsonBody = json.toString();
+        String url = "http://192.168.1.3:80/api/" + APIUserId;
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, r -> {
+            System.out.println(r);
+        }, error -> {
+            Log.d("ERROR", "API CALL ERROR");
+            Log.d("ERROR", error.getMessage());
+        })
+        {
+            @Override
+            public String getBodyContentType()
+            {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody()
+            {
+                if(jsonBody != null)
+                {
+                    try
+                    {
+                        return jsonBody.getBytes("utf-8");
+                    }
+                    catch (UnsupportedEncodingException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
+        };
+        MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(request);
     }
 
+    /*
     private void getCallLampApi(String resource, Context context)
     {
         String url = APIUrl + resource;
@@ -42,7 +91,6 @@ public class LampCommunication
                     {
                         System.out.println(r);
 
-                        //TODO: Make seperate Request for API Key.
                         //TODO: CALL CALLBACK LOADING ACTIVITY
                     }
                 }, new Response.ErrorListener()
@@ -94,6 +142,7 @@ public class LampCommunication
     {
         return  new ArrayList<LampItem>();
     }
+    */
 }
 
 
