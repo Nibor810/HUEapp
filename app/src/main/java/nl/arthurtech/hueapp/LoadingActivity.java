@@ -27,6 +27,7 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+        JsonParser jsonParser = new JsonParser();
 
         //Request the API Key
         JSONObject json = new JSONObject();
@@ -41,7 +42,10 @@ public class LoadingActivity extends AppCompatActivity {
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, "http://192.168.1.3:80/api", null, r -> {
             System.out.println(r);
-            parseApiKeyResponse(r);
+
+            Intent intent = new Intent(this, LampListActivity.class);
+            intent.putExtra("APIKEY", jsonParser.parseApiKeyResponse(r));
+            startActivity(intent);
         }, error -> {
             Log.d("ERROR", "API CALL ERROR");
             Log.d("ERROR", error.getMessage());
@@ -73,20 +77,5 @@ public class LoadingActivity extends AppCompatActivity {
         MyVolleyRequestQueue.getInstance(this).getRequestQueue().add(request);
     }
 
-    private void parseApiKeyResponse(JSONArray response)
-    {
-        try
-        {
-            JSONObject succes = response.getJSONObject(0);
-            JSONObject key = (JSONObject) succes.get("success");
 
-            Intent intent = new Intent(this, LampListActivity.class);
-            intent.putExtra("APIKEY", (String) key.get("username"));
-            startActivity(intent);
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-    }
 }
