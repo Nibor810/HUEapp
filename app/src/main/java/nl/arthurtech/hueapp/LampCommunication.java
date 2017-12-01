@@ -25,6 +25,7 @@ public class LampCommunication
     private String APIUserId;
     private Context context;
     private JsonParser jsonParser;
+    private LampUpdateCallback luCallBack;
 
     public LampCommunication(Context context, String APIUserId)
     {
@@ -35,6 +36,10 @@ public class LampCommunication
         APIUrl = "http://192.168.1.3:80/api/";
 
         getLamps();
+    }
+
+    public void setListener(LampUpdateCallback callback){
+        luCallBack = callback;
     }
 
     public void getLamps()

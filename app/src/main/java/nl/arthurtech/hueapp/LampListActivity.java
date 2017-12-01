@@ -24,7 +24,7 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
     //LampRecyclerViewAdapter lampRecyclerViewAdapter;
     List<LampItem> lamps = new ArrayList<>();
     private static final String TAG = "LampListActivity";
-    LampCommunication lampCommunication;
+    public static LampCommunication lampCommunication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

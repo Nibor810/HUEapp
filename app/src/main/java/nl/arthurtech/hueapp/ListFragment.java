@@ -25,7 +25,7 @@ import java.util.Timer;
  * Use the {@link ListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends Fragment{
+public class ListFragment extends Fragment implements LampUpdateCallback{
     List<LampItem> lamps= new ArrayList<>();
     RecyclerView recyclerView;
     LampRecyclerViewAdapter lampRecyclerViewAdapter;
@@ -60,6 +60,7 @@ public class ListFragment extends Fragment{
 
     private void UpdateLamps() {
         //TODO updateLamps
+        LampListActivity.lampCommunication.getLamps();
     }
 
     //Moet de lampen in de lijst met lampitems stoppen
@@ -99,6 +100,13 @@ public class ListFragment extends Fragment{
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void updateLampList(List<LampItem> lamps) {
+        //Sets the new lamplist ands gives notification to update lamp list
+        this.lamps = lamps;
+        lampRecyclerViewAdapter.notifyDataSetChanged();
     }
 
 
