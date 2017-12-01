@@ -60,8 +60,14 @@ public class ListFragment extends Fragment implements LampUpdateCallback{
     }
 
     private void UpdateLamps() {
-        //TODO updateLamps
         LampListActivity.lampCommunication.getLamps();
+    }
+
+    @Override
+    public void updateLampList(List<LampItem> lamps) {
+        //Sets the new lamplist ands gives notification to update lamp list
+        this.lamps = lamps;
+        lampRecyclerViewAdapter.notifyDataSetChanged();
     }
 
     //Moet de lampen in de lijst met lampitems stoppen
@@ -103,12 +109,7 @@ public class ListFragment extends Fragment implements LampUpdateCallback{
         mListener = null;
     }
 
-    @Override
-    public void updateLampList(List<LampItem> lamps) {
-        //Sets the new lamplist ands gives notification to update lamp list
-        this.lamps = lamps;
-        lampRecyclerViewAdapter.notifyDataSetChanged();
-    }
+
 
 
     /**
