@@ -38,24 +38,6 @@ public class LampCommunication
 
     public void getLamps()
     {
-        /*
-        //Request the API Key
-        String url = "http://192.168.1.3:80/api/" + APIUserId;
-
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, r -> {
-            try
-            {
-                jsonParser.parseLampList(r);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-        }, error -> {
-            Log.d("ERROR", "API CALL ERROR");
-            Log.d("ERROR", error.getMessage());
-        });
-        MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(request);*/
-
         String url = "http://192.168.1.3:80/api/" + APIUserId + "/lights";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
