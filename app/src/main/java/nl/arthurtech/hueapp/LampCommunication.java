@@ -35,8 +35,6 @@ public class LampCommunication
 
         jsonParser = new JsonParser();
         APIUrl = "http://192.168.1.3:80/api/";
-
-        updateLamp(1);
     }
 
     public void setListener(LampUpdateCallback callback){
@@ -68,23 +66,23 @@ public class LampCommunication
         MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(stringRequest);
     }
 
-    public void updateLamp(int lampId)
+    public void updateLamp(LampItem lampItem)
     {
         //Request the API Key
         JSONObject json = new JSONObject();
         try
         {
-            json.put("hue", "65000");
-            json.put("on", "true");
-            json.put("sat", "5");
-            json.put("bri", "245");
+            json.put("hue", lampItem.getLampHue());
+            json.put("on", lampItem.getOn());
+            json.put("sat", lampItem.getSaturation());
+            json.put("bri", lampItem.getBrightness());
         } catch (JSONException e)
         {
             e.printStackTrace();
         }
         final String jsonBody = json.toString();
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + APIUserId + "/lights/" + lampId), null, r -> {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + APIUserId + "/lights/" + lampItem.getLampID()), null, r -> {
             System.out.println(r);
 
         }, error -> {

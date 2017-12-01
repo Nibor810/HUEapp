@@ -8,19 +8,33 @@ import android.graphics.Color;
 
 public class LampItem {
     private String lampID;
-    private int lampColor;
+    private int lampHue;
+    private int brightness;
+    private boolean on;
+    private int saturation;
 
-
-    public LampItem(String lampID, int lampColor) {
+    public LampItem(String lampID, int lampHue) {
         this.lampID = lampID;
-        this.lampColor = lampColor;
+        this.lampHue = lampHue;
     }
 
     public String getLampID() {
         return lampID;
     }
 
-    public int getLampColor() {
-        return lampColor;
+    public int getLampHue() {
+        return lampHue;
+    }
+
+    public int getBrightness() {
+        return brightness;
+    }
+
+    public boolean getOn() {
+        return on;
+    }
+
+    public int getSaturation() {
+        return saturation;
     }
 }
