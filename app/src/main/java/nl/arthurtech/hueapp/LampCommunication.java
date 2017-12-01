@@ -32,13 +32,14 @@ public class LampCommunication
         this.APIUserId = APIUserId;
 
         jsonParser = new JsonParser();
+        APIUrl = "http://192.168.1.3:80/api/";
 
         getLamps();
     }
 
     public void getLamps()
     {
-        String url = "http://192.168.1.3:80/api/" + APIUserId + "/lights";
+        String url = APIUrl + APIUserId + "/lights";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 result ->
