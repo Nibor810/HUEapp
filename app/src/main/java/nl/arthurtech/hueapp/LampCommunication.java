@@ -52,6 +52,7 @@ public class LampCommunication
                     try
                     {
                         ArrayList<LampItem> lamps = jsonParser.parseLampList(new JSONObject(result));
+                        luCallBack.updateLampList(lamps);
                     } catch (JSONException e)
                     {
                         e.printStackTrace();
