@@ -29,6 +29,10 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
         this.fragment = fragment;
     }
 
+    public void updateList(List<LampItem> lamps){
+
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lamp_row,parent,false);
