@@ -39,7 +39,7 @@ public class JsonParser
             {
                 JSONObject lightObject = (JSONObject) response.get(Integer.toString(i));
                 JSONObject stateObject = (JSONObject) lightObject.get("state");
-                lampList.add(new LampItem(Integer.toString(i), ((Integer) stateObject.get("hue")), ((Integer) stateObject.get("brightness")), ((Integer) stateObject.get("saturation")), ((boolean) stateObject.get("on"))));
+                lampList.add(new LampItem(Integer.toString(i), ((Integer) stateObject.get("hue")), ((Integer) stateObject.get("bri")), ((Integer) stateObject.get("sat")), ((boolean) stateObject.get("on"))));
             }
         } catch (JSONException e)
         {
