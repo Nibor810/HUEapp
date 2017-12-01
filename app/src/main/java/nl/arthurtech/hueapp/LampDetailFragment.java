@@ -62,7 +62,7 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        LampCommunication.lampCommunication.setDetailListener(this);
 
 
     }
@@ -195,8 +195,14 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
 
     @Override
     public void updateLampDetails(LampItem lamp) {
-        Log.i("Callback","-called");
+        Log.i("Callback Set Lamp","-called");
         setLamp(lamp);
+    }
+
+    @Override
+    public void updateGUI() {
+        Log.i("Callback UI","-called");
+        updateUI();
     }
 
     public interface OnFragmentInteractionListener {

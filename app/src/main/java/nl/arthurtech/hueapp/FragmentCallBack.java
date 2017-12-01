@@ -6,4 +6,5 @@ package nl.arthurtech.hueapp;
 
 public interface FragmentCallBack {
     void updateLampDetails(LampItem lamp);
+    void updateGUI();
 }

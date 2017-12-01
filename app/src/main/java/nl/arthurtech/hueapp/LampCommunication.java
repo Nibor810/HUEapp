@@ -26,6 +26,7 @@ public class LampCommunication
     private Context context;
     private JsonParser jsonParser;
     private LampUpdateCallback luCallBack;
+    private FragmentCallBack fCallBack;
     public static LampCommunication lampCommunication;
 
     public LampCommunication(Context context, String APIUserId)
@@ -37,8 +38,11 @@ public class LampCommunication
         APIUrl = "http://192.168.1.3:80/api/";
     }
 
-    public void setListener(LampUpdateCallback callback){
+    public void setListListener(LampUpdateCallback callback){
         luCallBack = callback;
+    }
+    public void setDetailListener(FragmentCallBack callback){
+        fCallBack = callback;
     }
 
     public void getLamps()
@@ -52,6 +56,7 @@ public class LampCommunication
                     {
                         ArrayList<LampItem> lamps = jsonParser.parseLampList(new JSONObject(result));
                         luCallBack.updateLampList(lamps);
+                        fCallBack.updateGUI();
                     } catch (JSONException e)
                     {
                         e.printStackTrace();
