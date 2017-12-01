@@ -1,11 +1,18 @@
 package nl.arthurtech.hueapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.android.volley.*;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -17,82 +24,41 @@ public class LampCommunication
     private String APIUrl;
     private String APIUserId;
     private Context context;
+    private JsonParser jsonParser;
 
-    public LampCommunication(String ipAdress, Context context, String APIUserId)
+    public LampCommunication(Context context, String APIUserId)
     {
-        APIUrl = ipAdress;
         this.context = context;
         this.APIUserId = APIUserId;
+
+        jsonParser = new JsonParser();
+        APIUrl = "http://192.168.1.3:80/api/";
+
+        getLamps();
     }
 
     public void getLamps()
     {
-        getCallLampApi("/" + APIUserId, context);
-    }
-
-    private void getCallLampApi(String resource, Context context)
-    {
-        String url = APIUrl + resource;
+        String url = APIUrl + APIUserId + "/lights";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>()
+                result ->
                 {
-                    @Override
-                    public void onResponse(String r)
+                    try
                     {
-                        System.out.println(r);
-
-                        //TODO: Make seperate Request for API Key.
-                        //TODO: CALL CALLBACK LOADING ACTIVITY
-                    }
-                }, new Response.ErrorListener()
-        {
-            @Override
-            public void onErrorResponse(VolleyError error)
-            {
-                Log.d("ERROR", "API CALL ERROR");
-                Log.d("ERROR", error.getMessage());
-            }
-        });
-
-        MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(stringRequest);
-    }
-
-    private String putCallLampApi(String resource, String data)
-    {
-        return "";
-    }
-
-    private void postCallLampApi(String resource, String data)
-    {
-        String url = APIUrl + resource;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
+                        ArrayList<LampItem> lamps = jsonParser.parseLampList(new JSONObject(result));
+                    } catch (JSONException e)
                     {
-                        //loadJsonArray(response);
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener()
-        {
-            @Override
-            public void onErrorResponse(VolleyError error)
-            {
-                Log.d("ERROR", "API CALL ERROR");
-            }
-        });
-    }
+                error ->
+                {
+                    Log.d("ERROR", "API CALL ERROR");
+                    Log.d("ERROR", error.getMessage());
+                });
 
-    public void setAPIUserId(String APIUserId)
-    {
-        this.APIUserId = APIUserId;
-    }
-
-    public ArrayList<LampItem> getLampList()
-    {
-        return  new ArrayList<LampItem>();
+        MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(stringRequest);
     }
 }
 

@@ -11,7 +11,6 @@ public class MainActivity extends AppCompatActivity
 {
     Button avansButton;
     Button emulatorButton;
-    String ipAdress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
