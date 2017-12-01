@@ -34,7 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/imageDetailColor"
-            android:layout_toEndOf="@+id/lampSwitch" />
+            android:layout_toEndOf="@+id/lampSwitch"
+            android:max="254"
+            android:progress="0" />
 
         <TextView
             android:id="@+id/textSaturaton"
@@ -66,7 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/seekBarSaturation"
             android:layout_alignStart="@+id/seekBarSaturation"
-            android:layout_below="@+id/textHue" />
+            android:layout_below="@+id/textHue"
+            android:max="254"
+            android:progress="0" />
 
         <SeekBar
             android:id="@+id/seekBarHue"
@@ -74,7 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textHue"
             android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/seekBarBrightness" />
+            android:layout_alignStart="@+id/seekBarBrightness"
+            android:max="10000"
+            android:progress="0" />
 
     </RelativeLayout>
 </FrameLayout>

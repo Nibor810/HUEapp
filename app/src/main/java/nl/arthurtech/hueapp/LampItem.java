@@ -38,7 +38,7 @@ public class LampItem {
     }
 
     public int getColor(){
-        return Color.HSVToColor(new float[]{lampHue,brightness,saturation});
+        return Color.HSVToColor(new float[]{lampHue/254,brightness/254,saturation/10000});
     }
 
 

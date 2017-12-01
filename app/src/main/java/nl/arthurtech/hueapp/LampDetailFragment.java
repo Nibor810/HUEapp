@@ -162,8 +162,12 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
         }
     }
 
-    private void updateColor(){
+    private void updateUI(){
         lampColorImage.setColorFilter(lamp.getColor());
+        lampSwitch.setChecked(lamp.getOn());
+        sbBrightness.setProgress(lamp.getBrightness());
+        sbHue.setProgress(lamp.getLampHue());
+        sbSaturation.setProgress(lamp.getSaturation());
     }
 
 
