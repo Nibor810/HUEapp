@@ -66,8 +66,7 @@ public class ListFragment extends Fragment implements LampUpdateCallback{
         //Sets the new lamplist ands gives notification to update lamp list
         if(!this.lamps.equals(lamps)){
             this.lamps = lamps;
-            lampRecyclerViewAdapter = new LampRecyclerViewAdapter(getContext(), lamps,(LampDetailFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_lamp_detail));
-            lampRecyclerViewAdapter.notifyDataSetChanged();
+            lampRecyclerViewAdapter.updateList(lamps);
         }
     }
 

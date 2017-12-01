@@ -30,7 +30,9 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
     }
 
     public void updateList(List<LampItem> lamps){
-
+        lamps.clear();
+        lamps.addAll(lamps);
+        notifyDataSetChanged();
     }
 
     @Override
