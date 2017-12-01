@@ -36,7 +36,7 @@ public class LampCommunication
         jsonParser = new JsonParser();
         APIUrl = "http://192.168.1.3:80/api/";
 
-        getLamps();
+        updateLamp(1);
     }
 
     public void setListener(LampUpdateCallback callback){
@@ -66,6 +66,56 @@ public class LampCommunication
                 });
 
         MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(stringRequest);
+    }
+
+    public void updateLamp(int lampId)
+    {
+        //Request the API Key
+        JSONObject json = new JSONObject();
+        try
+        {
+            json.put("hue", "65000");
+            json.put("on", "true");
+            json.put("sat", "5");
+            json.put("bri", "245");
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        final String jsonBody = json.toString();
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + APIUserId + "/lights/" + lampId), null, r -> {
+            System.out.println(r);
+
+        }, error -> {
+            Log.d("ERROR", "API CALL ERROR");
+            Log.d("ERROR", error.getMessage());
+        })
+        {
+            @Override
+            public String getBodyContentType()
+            {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody()
+            {
+                if(jsonBody != null)
+                {
+                    try
+                    {
+                        return jsonBody.getBytes("utf-8");
+                    }
+                    catch (UnsupportedEncodingException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
+        };
+        MyVolleyRequestQueue.getInstance(context).getRequestQueue().add(request);
     }
 }
 
