@@ -41,7 +41,7 @@ public class LampRecyclerViewAdapter extends RecyclerView.Adapter<LampRecyclerVi
     public void onBindViewHolder(LampRecyclerViewAdapter.ViewHolder holder, int position) {
         LampItem lampItem = lamps.get(position);
         holder.lampID.setText(lampItem.getLampID());
-        holder.lampColor.setColorFilter(lampItem.getLampHue());
+        holder.lampColor.setColorFilter(lampItem.getColor());
     }
 
     @Override
