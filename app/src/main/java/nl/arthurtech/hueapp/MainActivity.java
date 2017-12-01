@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
 
         avansButton.setOnClickListener((View v) -> {
             saveIP("avansIP");
+            LampCommunication.lampCommunication = new LampCommunication(this,"AVANS KEY");
             startActivity(new Intent(this, LampListActivity.class));
         });
 

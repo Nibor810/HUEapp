@@ -47,7 +47,7 @@ public class ListFragment extends Fragment implements LampUpdateCallback{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        LampCommunication.lampCommunication.setListener(this);
         new Thread(()->{
             while(true){
                 UpdateLamps();
@@ -60,8 +60,7 @@ public class ListFragment extends Fragment implements LampUpdateCallback{
     }
 
     private void UpdateLamps() {
-        LampListActivity.lampCommunication.setListener(this);
-        LampListActivity.lampCommunication.getLamps();
+        LampCommunication.lampCommunication.getLamps();
     }
 
     @Override

@@ -26,6 +26,7 @@ public class LampCommunication
     private Context context;
     private JsonParser jsonParser;
     private LampUpdateCallback luCallBack;
+    public static LampCommunication lampCommunication;
 
     public LampCommunication(Context context, String APIUserId)
     {
