@@ -42,9 +42,9 @@ public class LoadingActivity extends AppCompatActivity {
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, "http://192.168.1.3:80/api", null, r -> {
             System.out.println(r);
-
+            LampCommunication.lampCommunication = new LampCommunication(this,jsonParser.parseApiKeyResponse(r));
             Intent intent = new Intent(this, LampListActivity.class);
-            intent.putExtra("APIKEY", jsonParser.parseApiKeyResponse(r));
+            //intent.putExtra("APIKEY", jsonParser.parseApiKeyResponse(r));
             startActivity(intent);
         }, error -> {
             Log.d("ERROR", "API CALL ERROR");
