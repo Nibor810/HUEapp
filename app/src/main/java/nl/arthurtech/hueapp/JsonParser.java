@@ -1,7 +1,5 @@
 package nl.arthurtech.hueapp;
 
-import android.content.Intent;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +39,7 @@ public class JsonParser
             {
                 JSONObject lightObject = (JSONObject) response.get(Integer.toString(i));
                 JSONObject stateObject = (JSONObject) lightObject.get("state");
-                lampList.add(new LampItem(Integer.toString(i), ((Integer) stateObject.get("hue"))));
+                lampList.add(new LampItem(Integer.toString(i), ((Integer) stateObject.get("hue")), ((Integer) stateObject.get("brightness")), ((Integer) stateObject.get("saturation")), ((boolean) stateObject.get("on"))));
             }
         } catch (JSONException e)
         {

@@ -134,19 +134,29 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
     }
 
     private void lampSwitched(boolean isChecked) {
-        //TODO: sent on or of command to lamp
+        lamp.setOn(isChecked);
+        LampCommunication.lampCommunication.updateLamp(lamp);
     }
 
     private void saturationChanged(int progress, boolean fromUser){
-        //TODO: sent new saturation value to lamp
+        if(fromUser) {
+            lamp.setSaturation(progress);
+            LampCommunication.lampCommunication.updateLamp(lamp);
+        }
     }
 
     private void hueChanged(int progress, boolean fromUser){
-        //TODO: sent new hue value to lamp
+        if(fromUser) {
+            lamp.setLampHue(progress);
+            LampCommunication.lampCommunication.updateLamp(lamp);
+        }
     }
 
     private void brightnessChanged(int progress, boolean fromUser){
-        //TODO: sent new brightness value to lamp
+        if(fromUser) {
+            lamp.setBrightness(progress);
+            LampCommunication.lampCommunication.updateLamp(lamp);
+        }
     }
 
 
