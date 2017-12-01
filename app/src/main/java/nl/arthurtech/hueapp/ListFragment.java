@@ -63,8 +63,10 @@ public class ListFragment extends Fragment implements LampUpdateCallback{
     @Override
     public void updateLampList(List<LampItem> lamps) {
         //Sets the new lamplist ands gives notification to update lamp list
-        this.lamps = lamps;
-        lampRecyclerViewAdapter.notifyDataSetChanged();
+        if(!this.lamps.equals(lamps)){
+            this.lamps = lamps;
+            lampRecyclerViewAdapter.notifyDataSetChanged();
+        }
     }
 
     //Moet de lampen in de lijst met lampitems stoppen
