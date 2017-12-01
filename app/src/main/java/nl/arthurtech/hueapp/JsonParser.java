@@ -48,9 +48,6 @@ public class JsonParser
             e.printStackTrace();
         }
 
-
         return lampList;
     }
-
-
 }
