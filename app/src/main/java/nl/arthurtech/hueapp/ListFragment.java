@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 
 /**
@@ -46,7 +47,19 @@ public class ListFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GetLamps();
+        new Thread(()->{
+            while(true){
+                UpdateLamps();
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+            }}
+        }).start();
+    }
+
+    private void UpdateLamps() {
+        //TODO updateLamps
     }
 
     //Moet de lampen in de lijst met lampitems stoppen
