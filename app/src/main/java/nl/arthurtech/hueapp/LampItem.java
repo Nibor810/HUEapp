@@ -1,5 +1,7 @@
 package nl.arthurtech.hueapp;
 
+import android.graphics.Color;
+
 /**
  * Created by robin on 24-11-2017.
  */
@@ -35,6 +37,9 @@ public class LampItem {
         this.saturation = saturation;
     }
 
+    public int getColor(){
+        return Color.HSVToColor(new float[]{lampHue,brightness,saturation});
+    }
 
 
     public String getLampID() {

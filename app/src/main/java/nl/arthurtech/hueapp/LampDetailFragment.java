@@ -2,6 +2,9 @@ package nl.arthurtech.hueapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -157,6 +160,10 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
             lamp.setBrightness(progress);
             LampCommunication.lampCommunication.updateLamp(lamp);
         }
+    }
+
+    private void updateColor(){
+        lampColorImage.setColorFilter(lamp.getColor());
     }
 
 

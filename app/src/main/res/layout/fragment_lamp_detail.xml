@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/lampSwitch"
+            android:layout_below="@+id/imageDetailColor"
             android:layout_toEndOf="@+id/lampSwitch" />
 
         <TextView
@@ -49,34 +49,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textSaturaton"
-            android:layout_toStartOf="@+id/textHue"
+            android:layout_below="@+id/textHue"
             android:text="Brightness" />
 
         <TextView
             android:id="@+id/textHue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/imageDetailColor"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textBrightness"
+            android:layout_below="@+id/textSaturaton"
             android:text="Hue" />
 
         <SeekBar
             android:id="@+id/seekBarBrightness"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/seekBarSaturation"
             android:layout_alignStart="@+id/seekBarSaturation"
-            android:layout_alignTop="@+id/textBrightness" />
+            android:layout_below="@+id/textHue" />
 
         <SeekBar
             android:id="@+id/seekBarHue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textHue"
             android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/seekBarBrightness"
-            android:layout_below="@+id/seekBarBrightness" />
+            android:layout_alignStart="@+id/seekBarBrightness" />
 
     </RelativeLayout>
 </FrameLayout>
