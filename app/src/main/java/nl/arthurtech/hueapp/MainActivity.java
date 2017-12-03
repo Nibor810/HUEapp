@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
 {
     Button avansButton;
     Button emulatorButton;
+    EditText addressBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         avansButton = findViewById(R.id.buttonReal);
         emulatorButton = findViewById(R.id.buttonSimulator);
+        addressBox = findViewById(R.id.editAdres);
 
         avansButton.setOnClickListener((View v) -> {
             saveIP("http://145.48.205.33");
@@ -35,14 +38,14 @@ public class MainActivity extends AppCompatActivity
 
     private void saveIP(String ip){
         //TODO:Sla IP op in file om later op te kunnen halen
-        SharedPreferences sharedPref = this.getPreferences(this.MODE_PRIVATE);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MY_PREF",this.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("IP", ip);
         editor.commit();
     }
 
     private String getFromSharedPreferences(String key){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MY_PREF",this.MODE_PRIVATE);
         return sharedPref.getString(key,"127.0.0.1");
     }
 }
