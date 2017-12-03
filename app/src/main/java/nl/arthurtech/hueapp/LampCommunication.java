@@ -48,7 +48,7 @@ public class LampCommunication
 
     public void getLamps()
     {
-        String url = APIUrl + APIUserId + "/lights";
+        String url = APIUrl + "/" + APIUserId + "/lights";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 result ->
