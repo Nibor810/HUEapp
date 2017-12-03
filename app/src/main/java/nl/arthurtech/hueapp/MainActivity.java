@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         emulatorButton.setOnClickListener((View v) -> {
-            saveIP("http://192.168.1.3:80");
+            saveIP(addressBox.getText().toString());//"http://192.168.1.3:80"
             startActivity(new Intent(this, LoadingActivity.class));
         });
     }
