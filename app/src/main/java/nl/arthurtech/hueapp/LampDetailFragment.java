@@ -36,11 +36,6 @@ public class LampDetailFragment extends Fragment implements AdapterView.OnItemCl
         // Required empty public constructor
     }
 
-    private String getFromSharedPreferences(String key){
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPref.getString(key,"127.0.0.1");
-    }
-
     public void setLamp(LampItem lamp){
         Log.i(TAG, "setLamp");
         this.lamp = lamp;

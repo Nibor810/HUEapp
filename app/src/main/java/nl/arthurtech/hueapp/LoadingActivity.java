@@ -81,7 +81,7 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     private String getFromSharedPreferences(String key){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MY_PREF",this.MODE_PRIVATE);
         return sharedPref.getString(key,"127.0.0.1");
     }
 
