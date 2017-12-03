@@ -35,7 +35,7 @@
             android:layout_above="@+id/seekBarBrightness"
             android:layout_alignEnd="@+id/seekBarBrightness"
             android:layout_toEndOf="@+id/textSaturaton"
-            android:max="254"
+            android:max="65535"
             android:progress="0" />
 
         <TextView

@@ -35,7 +35,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/imageDetailColor"
             android:layout_toEndOf="@+id/lampSwitch"
-            android:max="254"
+            android:max="65535"
             android:progress="0" />
 
         <TextView
