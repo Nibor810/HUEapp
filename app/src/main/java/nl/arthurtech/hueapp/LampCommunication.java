@@ -48,7 +48,7 @@ public class LampCommunication
 
     public void getLamps()
     {
-        String url = APIUrl + "/" + APIUserId + "/lights";
+        String url = APIUrl + "/api/" + APIUserId + "/lights";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 result ->
@@ -88,7 +88,7 @@ public class LampCommunication
         }
         final String jsonBody = json.toString();
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + APIUserId + "/lights/" + lampItem.getLampID()), null, r -> {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + "/api/" + APIUserId + "/lights/" + lampItem.getLampID()), null, r -> {
             System.out.println(r);
 
         }, error -> {
