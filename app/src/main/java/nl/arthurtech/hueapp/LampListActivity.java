@@ -20,35 +20,16 @@ import java.util.ListIterator;
 
 public class LampListActivity extends AppCompatActivity implements ListFragment.OnFragmentInteractionListener, LampDetailFragment.OnFragmentInteractionListener {
 
-    //RecyclerView recyclerView;
-    //LampRecyclerViewAdapter lampRecyclerViewAdapter;
     List<LampItem> lamps = new ArrayList<>();
     private static final String TAG = "LampListActivity";
-    //public static LampCommunication lampCommunication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_lamp_list);
-        //String apiKey = "";
-        //Bundle extras = getIntent().getExtras();
-//        if (extras == null) {
-//            //TODO: what to do with empty key.
-//        } else {
-//            apiKey = extras.getString("APIKEY");
-//        }
-        //TODO: Create Lamp Communication
-
-        //System.out.println("LamplistActivity: " + apiKey);
-
-        //lampCommunication = new LampCommunication(this, apiKey);
     }
 
-    private String getFromSharedPreferences(String key){
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        return sharedPref.getString(key,"127.0.0.1");
-    }
+
 
     private List<LampItem> getLamps(){
         //TODO: Get all the lamps.

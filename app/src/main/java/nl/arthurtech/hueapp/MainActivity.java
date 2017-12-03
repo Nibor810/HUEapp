@@ -1,5 +1,6 @@
 package nl.arthurtech.hueapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -21,18 +22,15 @@ public class MainActivity extends AppCompatActivity
         emulatorButton = findViewById(R.id.buttonSimulator);
 
         avansButton.setOnClickListener((View v) -> {
-            saveIP("avansIP");
-            LampCommunication.lampCommunication = new LampCommunication(this,"AVANS KEY");
+            saveIP("http://145.48.205.33");
+            LampCommunication.lampCommunication = new LampCommunication(this,"iYrmsQq1wu5FxF9CPqpJCnm1GpPVylKBWDUsNDhB",getFromSharedPreferences("IP"));
             startActivity(new Intent(this, LampListActivity.class));
         });
 
         emulatorButton.setOnClickListener((View v) -> {
-            saveIP("127.0.0.1");
+            saveIP("http://192.168.1.3:80");
             startActivity(new Intent(this, LoadingActivity.class));
         });
-
-        //lampCommunication = new LampCommunication(ipAdress, this);
-        //lampCommunication.getLamps();
     }
 
     private void saveIP(String ip){
@@ -41,5 +39,10 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("IP", ip);
         editor.commit();
+    }
+
+    private String getFromSharedPreferences(String key){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getString(key,"127.0.0.1");
     }
 }

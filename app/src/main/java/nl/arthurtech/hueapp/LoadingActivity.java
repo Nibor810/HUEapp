@@ -1,5 +1,6 @@
 package nl.arthurtech.hueapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,8 @@ public class LoadingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading);
         JsonParser jsonParser = new JsonParser();
 
+        String address = getFromSharedPreferences("IP");
+
         //Request the API Key
         JSONObject json = new JSONObject();
         try
@@ -40,9 +43,9 @@ public class LoadingActivity extends AppCompatActivity {
         }
         final String jsonBody = json.toString();
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, "http://192.168.1.3:80/api", null, r -> {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, address+"/api", null, r -> {
             System.out.println(r);
-            LampCommunication.lampCommunication = new LampCommunication(this,jsonParser.parseApiKeyResponse(r));
+            LampCommunication.lampCommunication = new LampCommunication(this,jsonParser.parseApiKeyResponse(r),address);
             Intent intent = new Intent(this, LampListActivity.class);
             //intent.putExtra("APIKEY", jsonParser.parseApiKeyResponse(r));
             startActivity(intent);
@@ -75,6 +78,11 @@ public class LoadingActivity extends AppCompatActivity {
             }
         };
         MyVolleyRequestQueue.getInstance(this).getRequestQueue().add(request);
+    }
+
+    private String getFromSharedPreferences(String key){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getString(key,"127.0.0.1");
     }
 
 

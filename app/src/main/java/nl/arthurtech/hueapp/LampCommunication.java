@@ -2,6 +2,7 @@ package nl.arthurtech.hueapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.android.volley.*;
@@ -29,13 +30,13 @@ public class LampCommunication
     private FragmentCallBack fCallBack;
     public static LampCommunication lampCommunication;
 
-    public LampCommunication(Context context, String APIUserId)
+    public LampCommunication(Context context, String APIUserId, String APIUrl)
     {
         this.context = context;
         this.APIUserId = APIUserId;
 
         jsonParser = new JsonParser();
-        APIUrl = "http://192.168.1.3:80/api/";
+        this.APIUrl = APIUrl;//"http://192.168.1.3:80/api/";
     }
 
     public void setListListener(LampUpdateCallback callback){
