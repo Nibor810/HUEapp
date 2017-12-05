@@ -46,8 +46,8 @@ public class LampItem {
     }
 
     public int getColor(){
-        Log.i("COLOR",String.valueOf(Color.HSVToColor(new float[]{lampHue/65535,brightness/254,saturation/254})));
-        return Color.HSVToColor(new float[]{lampHue/65535,brightness/254,saturation/254});
+        Log.i("COLOR",String.valueOf(Color.HSVToColor(new float[]{(lampHue/65535)*360,saturation/254,brightness/254})));
+        return Color.HSVToColor(new float[]{(lampHue/65535)*360,saturation/254,brightness/254});
     }
 
 
