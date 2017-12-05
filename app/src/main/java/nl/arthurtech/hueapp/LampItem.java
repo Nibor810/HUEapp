@@ -22,6 +22,13 @@ public class LampItem {
         this.saturation = saturation;
     }
 
+    @Override
+    public String toString(){
+        return "Lamp: "+lampID +" Hue: "+lampHue+" Sat: "+saturation+" Bri: "+brightness+" COLOR: "+getColor();
+    }
+
+
+
     public void setOn(boolean on){
         this.on = on;
     }
