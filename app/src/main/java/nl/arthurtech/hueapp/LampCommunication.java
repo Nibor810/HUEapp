@@ -88,7 +88,7 @@ public class LampCommunication
         }
         final String jsonBody = json.toString();
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + "/api/" + APIUserId + "/lights/" + lampItem.getLampID()), null, r -> {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, (APIUrl + "/api/" + APIUserId + "/lights/" + lampItem.getLampID() + "/state"), null, r -> {
             System.out.println(r);
 
         }, error -> {
