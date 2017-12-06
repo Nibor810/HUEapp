@@ -1,6 +1,7 @@
 package nl.arthurtech.hueapp;
 
 import android.graphics.Color;
+import android.util.Log;
 
 /**
  * Created by robin on 24-11-2017.
@@ -21,6 +22,13 @@ public class LampItem {
         this.saturation = saturation;
     }
 
+    @Override
+    public String toString(){
+        return "Lamp: "+lampID +" Hue: "+lampHue+" Sat: "+saturation+" Bri: "+brightness+" COLOR: "+getColor();
+    }
+
+
+
     public void setOn(boolean on){
         this.on = on;
     }
@@ -38,7 +46,8 @@ public class LampItem {
     }
 
     public int getColor(){
-        return Color.HSVToColor(new float[]{lampHue/254,brightness/254,saturation/65535});
+        //Log.i("COLOR",String.valueOf(Color.HSVToColor(new float[]{(lampHue/65535)*360,saturation/254,brightness/254})));
+        return Color.HSVToColor(new float[]{lampHue/182.0416666666667f,saturation/254f,brightness/254f});
     }
 
 
