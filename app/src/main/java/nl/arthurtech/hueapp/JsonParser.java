@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by Arthur on 30-11-2017.
@@ -35,19 +36,22 @@ public class JsonParser
     {
         ArrayList<LampItem> lampList = new ArrayList<LampItem>();
 
-        try
+        Iterator<String> iterator = response.keys();
+        while (iterator.hasNext())
         {
-            for(int i = 1; i < (response.length() + 1); i++)
+            String key = iterator.next();
+            try
             {
-                JSONObject lightObject = (JSONObject) response.get(Integer.toString(i));
+                JSONObject lightObject = (JSONObject) response.get(key);
                 JSONObject stateObject = (JSONObject) lightObject.get("state");
-                LampItem lamp = new LampItem(Integer.toString(i), ((Integer) stateObject.get("hue")), ((Integer) stateObject.get("bri")), ((Integer) stateObject.get("sat")), ((boolean) stateObject.get("on")));
+                LampItem lamp = new LampItem(key, ((Integer) stateObject.get("hue")), ((Integer) stateObject.get("bri")), ((Integer) stateObject.get("sat")), ((boolean) stateObject.get("on")));
                 Log.i("LAMP",lamp.toString());
                 lampList.add(lamp);
             }
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
         }
 
         return lampList;
