@@ -29,15 +29,9 @@ public class LampListActivity extends AppCompatActivity implements ListFragment.
         setContentView(R.layout.activity_lamp_list);
     }
 
-    private List<LampItem> getLamps(){
-        //TODO: Get all the lamps.
-        return new ArrayList<LampItem>();
-    }
-
     @Override
     public void onFragmentInteraction(LampItem lamp) {
         LampDetailFragment lampDetailFragment = (LampDetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_lamp_list);
-        Log.i(TAG, "ListitemClicked");
         lampDetailFragment.setLamp(lamp);
     }
 
