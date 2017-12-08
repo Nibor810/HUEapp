@@ -35,7 +35,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/imageDetailColor"
             android:layout_toEndOf="@+id/lampSwitch"
-            android:max="65535"
+            android:max="254"
             android:progress="0" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_alignBottom="@+id/textHue"
             android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/seekBarBrightness"
-            android:max="10000"
+            android:max="65535"
             android:progress="0" />
 
     </RelativeLayout>
